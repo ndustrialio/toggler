@@ -28,6 +28,4 @@ That will fill in all your missing toggle entries:
 
 
 
-# UAYOR
-
-###Use at your own risk :)
+# UAYOR (Use at your own risk :)
