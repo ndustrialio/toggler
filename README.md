@@ -1,11 +1,19 @@
 # toggler
 simple toggl logger
 
-### How to use
-- Define these environment variables
+### Installation
+```bash
+pip install -r requirements.txt
+```
 
-TOGGL_API_TOKEN: your personal toggl api token 
-TOGGL_PROJECT_ID: the project id to use for toggl time entries
+### How to use
+
+Define these environment variables
+
+- `TOGGL_API_TOKEN`: your personal toggl api token 
+- `TOGGL_PROJECT_ID`: the project id to use for toggl time entries
+
+*Note: Only one project is supported at this time.*
 
 Then run
 ```
@@ -19,8 +27,6 @@ That will fill in all your missing toggle entries:
   - to the end of the current month (ish)
 
 
-*Note*
-- Only one project id is supported.
 
 # UAYOR
 
