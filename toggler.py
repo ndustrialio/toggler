@@ -5,15 +5,24 @@ from datetime import *
 import pytz
 import requests
 
+# GLOBALS
+
 BASE_URL = 'https://www.toggl.com/api/v8'
 TOGGL_API_TOKEN = os.environ['TOGGL_API_TOKEN']
+TOGGL_PROJECT_ID = os.environ['TOGGL_PROJECT_ID']
 TZ = pytz.timezone('US/Eastern')
 
 END_DATE = datetime(datetime.now().year, datetime.now().month, 1, tzinfo=TZ) + timedelta(days=30)
 START_DATE = END_DATE - timedelta(days=90)
 
 
-def query(url, params={}, json={}, method='GET'):
+# SAUCE
+
+def query(url, params=None, json=None, method='GET'):
+    if params is None:
+        params = {}
+    if json is None:
+        json = {}
     api_endpoint = BASE_URL + url
     auth = (TOGGL_API_TOKEN, 'api_token')
     headers = {'content-type': 'application/json'}
@@ -40,7 +49,7 @@ def post_time_entry(day):
             "description": "MetricsOne",
             "duration": 28800,
             "start": datetime(day.year, day.month, day.day, hour=8, tzinfo=TZ).isoformat(),
-            "pid": 13288125,
+            "pid": TOGGL_PROJECT_ID,
             "created_with": "toggler"
         }
     }
@@ -52,7 +61,6 @@ def fill_time_entries():
     entries = get_time_entries(START_DATE, END_DATE + timedelta(days=1))
     reported = {}
     for entry in entries:
-        print entry
         reported[entry['start'][:10]] = True
 
     day = START_DATE
