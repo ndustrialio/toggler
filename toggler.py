@@ -10,6 +10,8 @@ import requests
 BASE_URL = 'https://www.toggl.com/api/v8'
 TOGGL_API_TOKEN = os.environ['TOGGL_API_TOKEN']
 TOGGL_PROJECT_ID = os.environ['TOGGL_PROJECT_ID']
+TOGGL_DEFAULT_DESCRIPTION = os.environ['TOGGL_DEFAULT_DESCRIPTION']
+
 TZ = pytz.timezone('US/Eastern')
 
 END_DATE = datetime(datetime.now().year, datetime.now().month, 1, tzinfo=TZ) + timedelta(days=30)
@@ -46,10 +48,11 @@ def get_time_entries(start, end):
 def post_time_entry(day):
     json = {
         "time_entry": {
-            "description": "MetricsOne",
+            "description": TOGGL_DEFAULT_DESCRIPTION,
             "duration": 28800,
-            "start": datetime(day.year, day.month, day.day, hour=8, tzinfo=TZ).isoformat(),
+            "start": datetime(day.year, day.month, day.day, hour=8, minute=0, second=0, tzinfo=TZ).isoformat(),
             "pid": TOGGL_PROJECT_ID,
+            "billable": True,
             "created_with": "toggler"
         }
     }
