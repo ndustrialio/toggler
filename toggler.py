@@ -14,7 +14,7 @@ TOGGL_DEFAULT_DESCRIPTION = os.environ['TOGGL_DEFAULT_DESCRIPTION']
 
 TZ = pytz.timezone('US/Eastern')
 
-END_DATE = datetime(datetime.now().year, datetime.now().month, 1, tzinfo=TZ) + timedelta(days=30)
+END_DATE = datetime(datetime.now().year, datetime.now().month, 1, tzinfo=TZ) - timedelta(days=1)
 START_DATE = END_DATE - timedelta(days=90)
 
 
