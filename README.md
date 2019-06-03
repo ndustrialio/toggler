@@ -24,8 +24,8 @@ python toggler.py
 That will fill in all your missing toggle entries: 
 - 8 ($$ billable) hours each weekday that does not have any existing time entry, 
 - Covering the time range
-  - from 90 days before the end of the current month 
-  - to the end of the current month (ish)
+  - from 90 days before the end of last month 
+  - to the end of last month
 
 
 # UAYOR: Use at your own risk, and keep away from the reach of micro managers :)

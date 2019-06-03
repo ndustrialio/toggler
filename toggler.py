@@ -50,7 +50,7 @@ def post_time_entry(day):
         "time_entry": {
             "description": TOGGL_DEFAULT_DESCRIPTION,
             "duration": 28800,
-            "start": datetime(day.year, day.month, day.day, hour=8, minute=0, second=0, tzinfo=TZ).isoformat(),
+            "start": TZ.localize(datetime(day.year, day.month, day.day, hour=8, minute=0, second=0)).isoformat(),
             "pid": TOGGL_PROJECT_ID,
             "billable": True,
             "created_with": "toggler"
